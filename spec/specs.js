@@ -7,5 +7,7 @@ describe('pigLatin', function() {
     expect(pigLatin("marker")).to.equal("arkermay");
   });
 
-
+  it("moves multiple consonants at the start of a word to the end with 'ay'", function() {
+    expect(pigLatin("start")).to.equal("artstay");
+  });
 });
