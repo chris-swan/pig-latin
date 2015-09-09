@@ -18,4 +18,18 @@ describe('pigLatin', function() {
   it("handles y as a vowel when it is not the first letter", function() {
     expect(pigLatin("dyson")).to.equal("ysonday");
   });
+
+  it("Translates a sentance/multiple words correctly to pig latin", function() {
+    expect(pigLatin("translate this sentance")).to.equal("anslatetray isthay entancesay");
+  } )
+});
+
+describe('isVowel', function() {
+  it("returns true if the input is a vowel", function() {
+    expect(isVowel("a")).to.equal(true);
+  });
+
+  it("returns false if the input is a not a vowel", function() {
+    expect(isVowel("c")).to.equal(false);
+  });
 });

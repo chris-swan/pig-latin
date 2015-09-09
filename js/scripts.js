@@ -1,16 +1,34 @@
 var pigLatin = function(userInput) {
-  var userInputStatic = userInput.slice();
-  while ((userInput[0] != "a") && (userInput[0] != "e") && (userInput[0] != "i") && (userInput[0] != "o") && (userInput[0] != "u")) {
-    if (userInput.slice(0,2) === "qu") {
-      userInput = userInput.slice(2) + userInput.slice(0,2);
-    } else if (userInputStatic[0] !== "y" && userInput[0] === "y"){
-      break;
-    } else {
-      userInput = userInput.slice(1) + userInput[0];
-    }
-  }
 
-  return userInput + "ay";
+  var words = userInput.split(" ");
+  var translatedWords = [];
+  words.forEach(function(word) {
+    var wordStatic = word.slice();
+    while (!isVowel(word[0])) {
+      if (word.slice(0,2) === "qu") {
+        word = word.slice(2) + word.slice(0,2);
+      } else if (wordStatic[0] !== "y" && word[0] === "y"){
+        break;
+      } else {
+        word = word.slice(1) + word[0];
+      }
+    }
+    translatedWords.push(word + "ay");
+  });
+
+  return translatedWords.join(" ");
+}
+
+var isVowel = function(userInputLetter) {
+  var vowels = ["a", "e", "i", "o", "u"]
+  var vowelValue = false;
+  vowels.forEach(function(vowel) {
+    if (userInputLetter === vowel) {
+      vowelValue = true;
+    }
+  });
+
+  return vowelValue;
 }
 
 $(document).ready(function() {
