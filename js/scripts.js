@@ -1,59 +1,70 @@
-var pigLatin = function(string) {
-  while ((string.slice(0,1) != "a") && (string.slice(0,1) != "e") && (string.slice(0,1) != "i") && (string.slice(0,1) != "o") && (string.slice(0,1) != "u")) {
-    string = string.slice(1) + string.slice(0,1);
+var pigLatin = function(userInput) {
+  while ((userInput.slice(0,1) != "a") && (userInput.slice(0,1) != "e") && (userInput.slice(0,1) != "i") && (userInput.slice(0,1) != "o") && (userInput.slice(0,1) != "u")) {
+    userInput = userInput.slice(1) + userInput.slice(0,1);
   }
 
-  return string + "ay";
+  return userInput + "ay";
 }
 
+$(document).ready(function() {
+  $("form#pig_latin").submit(function(event) {
+    var user_input_form = String($("input#user_input").val());
+    var result = pigLatin(user_input_form);
+
+    $(".result").text(result);
+
+    event.preventDefault();
+
+  });
+});
 
 // Other attempts in work process:
-// var pigLatin = function(string) {
-//   var letters = string.split("");
+// var pigLatin = function(userInput) {
+//   var letters = userInput.split("");
 //     letters.forEach(function(letter)) {
-//       if ((string.slice(0,1) != "a") && (string.slice(0,1) != "e") && (string.slice(0,1) != "i") && (string.slice(0,1) != "o") && (string.slice(0,1) != "u")) {
-//         string = string.slice(1) + string.slice(0,1);
+//       if ((userInput.slice(0,1) != "a") && (userInput.slice(0,1) != "e") && (userInput.slice(0,1) != "i") && (userInput.slice(0,1) != "o") && (userInput.slice(0,1) != "u")) {
+//         userInput = userInput.slice(1) + userInput.slice(0,1);
 //       }
 //     }
 //
-//   return string + "ay";
+//   return userInput + "ay";
 // }
 
 
-// var pigLatin = function(string) {
+// var pigLatin = function(userInput) {
 //   var vowels = ["a", "e", "i", "o", "u"];
 //   for (var i = 0; i < 5; i++) {
-//     if (string[i] === "a") {
+//     if (userInput[i] === "a") {
 //       break;
-//     } else if (string[i] === "e") {
+//     } else if (userInput[i] === "e") {
 //       break;
-//     } else if (string[i] === "i") {
+//     } else if (userInput[i] === "i") {
 //       break;
-//     } else if (string[i] === "o") {
+//     } else if (userInput[i] === "o") {
 //       break;
-//     } else if (string[i] === "u") {
+//     } else if (userInput[i] === "u") {
 //       break;
 //     } else {
-//       string = string.slice(1) + string.slice(0,1);
+//       userInput = userInput.slice(1) + userInput.slice(0,1);
 //     }
 //   }
 
-//   return string + "ay";
+//   return userInput + "ay";
 // }
 
-// var pigLatin = function(string) {
+// var pigLatin = function(userInput) {
 //   var consonants = ["q", "w", "r", "t", "y", "p", "s", "d", "f", "g", "j", "h", "k", "l", "z", "x", "c", "v", "b", "n", "m"];
 //   var vowels = ["a", "e", "i", "o", "u"];
 //   for (var i = 0; i <= 4; i++) {
 //     vowels.forEach(function(vowel) {
-//       if (string.slice(i, i + 1) === vowel) {
+//       if (userInput.slice(i, i + 1) === vowel) {
 //         debugger;
-//         string = string + "ay";
+//         userInput = userInput + "ay";
 //       } else {
 //         consonants.forEach(function(consonant) {
-//             if (string.slice(0, 1) === consonant) {
-//               string = string.slice(1) + consonant;
-//               console.log(string);
+//             if (userInput.slice(0, 1) === consonant) {
+//               userInput = userInput.slice(1) + consonant;
+//               console.log(userInput);
 //             }
 //
 //         });
