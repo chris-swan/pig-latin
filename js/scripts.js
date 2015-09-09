@@ -1,9 +1,12 @@
 var pigLatin = function(userInput) {
-  while ((userInput.slice(0,1) != "a") && (userInput.slice(0,1) != "e") && (userInput.slice(0,1) != "i") && (userInput.slice(0,1) != "o") && (userInput.slice(0,1) != "u")) {
+  var userInputStatic = userInput.slice();
+  while ((userInput[0] != "a") && (userInput[0] != "e") && (userInput[0] != "i") && (userInput[0] != "o") && (userInput[0] != "u")) {
     if (userInput.slice(0,2) === "qu") {
       userInput = userInput.slice(2) + userInput.slice(0,2);
+    } else if (userInputStatic[0] !== "y" && userInput[0] === "y"){
+      break;
     } else {
-      userInput = userInput.slice(1) + userInput.slice(0,1);
+      userInput = userInput.slice(1) + userInput[0];
     }
   }
 
@@ -26,8 +29,8 @@ $(document).ready(function() {
 // var pigLatin = function(userInput) {
 //   var letters = userInput.split("");
 //     letters.forEach(function(letter)) {
-//       if ((userInput.slice(0,1) != "a") && (userInput.slice(0,1) != "e") && (userInput.slice(0,1) != "i") && (userInput.slice(0,1) != "o") && (userInput.slice(0,1) != "u")) {
-//         userInput = userInput.slice(1) + userInput.slice(0,1);
+//       if ((userInput[0] != "a") && (userInput[0] != "e") && (userInput[0] != "i") && (userInput[0] != "o") && (userInput[0] != "u")) {
+//         userInput = userInput.slice(1) + userInput[0];
 //       }
 //     }
 //
@@ -49,7 +52,7 @@ $(document).ready(function() {
 //     } else if (userInput[i] === "u") {
 //       break;
 //     } else {
-//       userInput = userInput.slice(1) + userInput.slice(0,1);
+//       userInput = userInput.slice(1) + userInput[0];
 //     }
 //   }
 
