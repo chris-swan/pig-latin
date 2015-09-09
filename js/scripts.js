@@ -1,6 +1,10 @@
 var pigLatin = function(userInput) {
   while ((userInput.slice(0,1) != "a") && (userInput.slice(0,1) != "e") && (userInput.slice(0,1) != "i") && (userInput.slice(0,1) != "o") && (userInput.slice(0,1) != "u")) {
-    userInput = userInput.slice(1) + userInput.slice(0,1);
+    if (userInput.slice(0,2) === "qu") {
+      userInput = userInput.slice(2) + userInput.slice(0,2);
+    } else {
+      userInput = userInput.slice(1) + userInput.slice(0,1);
+    }
   }
 
   return userInput + "ay";
